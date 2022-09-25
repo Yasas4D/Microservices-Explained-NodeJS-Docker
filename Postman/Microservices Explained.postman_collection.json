@@ -1,0 +1,1048 @@
+{
+	"info": {
+		"_postman_id": "6107081b-c3cd-47df-9ebf-b23f6dded466",
+		"name": "Microservices Explained",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6750276"
+	},
+	"item": [
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Dev",
+					"item": [
+						{
+							"name": "Order_Cart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ORDER_BASE}}/cart",
+									"host": [
+										"{{ORDER_BASE}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order_Create_Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"txnId\": \"afs25ww5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ORDER_BASE}}/order",
+									"host": [
+										"{{ORDER_BASE}}"
+									],
+									"path": [
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order_Get_orders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ORDER_BASE}}/orders",
+									"host": [
+										"{{ORDER_BASE}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Prod",
+					"item": [
+						{
+							"name": "Order_Cart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/shopping/cart",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"shopping",
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order_Create_Order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"txnId\": \"afs25ww5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/shopping/order",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"shopping",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Order_Get_orders",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/shopping/orders",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"shopping",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Dev",
+					"item": [
+						{
+							"name": "User_Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"micro_service_auth_token\", jsonData.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"yasas@test.com\",\n    \"password\":\"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE}}/login",
+									"host": [
+										"{{USER_BASE}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User_Signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"yasas@test.com\",\n    \"password\":\"12345\",\n    \"phone\":\"12345qqqqqq\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE}}/signup",
+									"host": [
+										"{{USER_BASE}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User_Shopping_details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE}}/shoping-details",
+									"host": [
+										"{{USER_BASE}}"
+									],
+									"path": [
+										"shoping-details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User_Wishlist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{USER_BASE}}/wishlist",
+									"host": [
+										"{{USER_BASE}}"
+									],
+									"path": [
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Prod",
+					"item": [
+						{
+							"name": "User_Signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"yasas@test.com\",\n    \"password\":\"12345\",\n    \"phone\":\"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/user/signup",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User_Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"micro_service_auth_token\", jsonData.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"yasas@test.com\",\n    \"password\":\"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/user/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User_Shopping_details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/user/shoping-details",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"shoping-details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User_Wishlist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/user/wishlist",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Dev",
+					"item": [
+						{
+							"name": "Products_Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Broccoli\",\n    \"desc\":\"great Quality of Fresh Vegetable\",\n    \"type\":\"vegetables\",\n    \"banner\":\"http://codergogoi.com/youtube/images/broccoli.jpeg\",\n    \"unit\":1,\n    \"price\":280, \n    \"available\":true,\n    \"suplier\":\"Golden seed firming\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/product/create",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_Selected",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\n        \"632bcac50a250c33d82e7651\",\n        \"632c068dbc7a876534eabefe\"\n    ]    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/ids",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_Category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/category/oils",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"category",
+										"oils"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_View",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/632bcac50a250c33d82e7651",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"632bcac50a250c33d82e7651"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add_To_Wishlist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_id\": \"632c068dbc7a876534eabefe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/wishlist",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add_To_Cart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_id\": \"632c068dbc7a876534eabefe\",\n    \"qty\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/cart",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_From_Cart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/cart/612cbc9ff201aa8b286fcd13",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"cart",
+										"612cbc9ff201aa8b286fcd13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove_From_Wishlist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PRODUCTS_BASE}}/wishlist/632c068dbc7a876534eabefe",
+									"host": [
+										"{{PRODUCTS_BASE}}"
+									],
+									"path": [
+										"wishlist",
+										"632c068dbc7a876534eabefe"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Prod",
+					"item": [
+						{
+							"name": "Products_Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Olive Oil\",\n    \"desc\":\"great Quality of Oil\",\n    \"type\":\"oils\",\n    \"banner\":\"http://codergogoi.com/youtube/images/oliveoil.jpg\",\n    \"unit\":1,\n    \"price\":400, \n    \"available\":true,\n    \"suplier\":\"Golden seed firming\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/product/create",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_Selected",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\":[\n        \"632bcac50a250c33d82e7651\",\n        \"632c068dbc7a876534eabefe\"\n    ]    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/ids",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_Category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/category/fruits",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category",
+										"fruits"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_View",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products_Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/632bcac50a250c33d82e7651",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"632bcac50a250c33d82e7651"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add_To_Wishlist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_id\": \"632e9bec97419f213cb83633\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/wishlist",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"wishlist"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add_To_Cart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{micro_service_auth_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"_id\": \"632e9bec97419f213cb83633\",\n    \"qty\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/cart",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_From_Cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/cart/612cbc9ff201aa8b286fcd13",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart",
+										"612cbc9ff201aa8b286fcd13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove_From_Wishlist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/wishlist/612cbc9ff201aa8b286fcd13",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"wishlist",
+										"612cbc9ff201aa8b286fcd13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3Q0QHRlc3QuY29tIiwiX2lkIjoiNjEyY2UwYzIyZTBkODY5ZDVhZDZjOTViIiwiaWF0IjoxNjMwMzMxMDc0LCJleHAiOjE2MzA0MTc0NzR9.XssUfB7yidmmTXLpwbEAvX5RGPR8yD0qGfpYp2DduxQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
