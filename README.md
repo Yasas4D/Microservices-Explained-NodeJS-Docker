@@ -1,5 +1,5 @@
 # Microservices Explained with NodeJS & Docker
-NodeJS Microservice Architecture Example with realtime project
+Microservice Architecture Example with realtime project
 
 #### To run the project, execute below two commands
 
@@ -12,5 +12,5 @@ NodeJS Microservice Architecture Example with realtime project
 - Try `GET http://localhost/` to check whether application is running
 
 
-POSTMAN Collection
-https://github.com/yasas4d/MicroservicesExplained/Microservices%20Tutorial.postman_collection.json
+Postman Collection & env - Can find inside the `Postman` folder.
+https://github.com/Yasas4D/Microservices-Explained-NodeJS-Docker/blob/main/Postman/Microservices%20Explained.postman_collection.json
