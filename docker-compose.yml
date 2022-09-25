@@ -1,0 +1,63 @@
+version: '3.0'
+services:
+  
+  nosql-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: nosql-db
+    volumes:
+      - ./db/:/data/db
+
+  product:
+    build:
+      dockerfile: Dockerfile
+      context: ./product
+    container_name: product
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - "nosql-db"
+    volumes:
+      - .:/app
+      - /app/product/node_modules
+
+  order:
+    build:
+      dockerfile: Dockerfile
+      context: ./order
+    container_name: order
+    ports:
+      - "8003:8003"
+    restart: always
+    depends_on:
+      - "nosql-db"
+    volumes:
+      - .:/app
+      - /app/order/node_modules
+
+  user:
+    build:
+      dockerfile: Dockerfile
+      context: ./user
+    container_name: user
+    ports:
+      - "8001:8001"
+    restart: always
+    depends_on:
+      - "nosql-db"
+    volumes:
+      - .:/app
+      - /app/user/node_modules
+  nginx-proxy:
+    build:
+      dockerfile: Dockerfile
+      context: ./proxy
+    depends_on:
+      - product
+      - order
+      - user
+    ports:
+      - "80:80"
+ 

@@ -1,0 +1,13 @@
+{"level":"error","message":"Wed Sep 21 2022 07:36:06 GMT+0530 (India Standard Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:49:09 GMT+0530 (India Standard Time)-{\"name\":\"Data Not found\",\"statusCode\":500,\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:50:51 GMT+0530 (India Standard Time)-{\"name\":\"Data Not found\",\"statusCode\":500,\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:51:17 GMT+0530 (India Standard Time)-{\"name\":\"Data Not found\",\"statusCode\":500,\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:53:13 GMT+0530 (India Standard Time)-{\"name\":\"Data Not found22\",\"statusCode\":500,\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:53:44 GMT+0530 (India Standard Time)-{\"name\":\"NOT FOUND\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":false,\"logError\":{}}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:57:23 GMT+0530 (India Standard Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false,\"logError\":{}}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:57:30 GMT+0530 (India Standard Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false,\"logError\":{}}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 07:57:48 GMT+0530 (India Standard Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false}","private":true}
+{"level":"error","message":"Wed Sep 21 2022 08:00:39 GMT+0530 (India Standard Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false}","private":true}
+{"level":"error","message":"Thu Sep 22 2022 11:59:42 GMT+0530 (India Standard Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false}","private":true}
+{"level":"error","message":"Sat Sep 24 2022 05:20:15 GMT+0000 (Coordinated Universal Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false}","private":true}
+{"level":"error","message":"Sat Sep 24 2022 05:54:31 GMT+0000 (Coordinated Universal Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":false}","private":true}
